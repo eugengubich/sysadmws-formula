@@ -74,6 +74,13 @@ sensu-plugins_install_{{ loop.index }}_patch_smart_1:
 
         {%- endif %}
       {%- endfor %}
+  sensu_plugins_dependencies:
+    pkg.installed:
+      - pkgs:
+        - libc6-dev
+    /usr/bin/mkdir:
+      file.symlink:
+        - target: /bin/mkdir
     {%- endif %}
 
   {%- endif %}
